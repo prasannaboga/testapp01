@@ -17,3 +17,11 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function () {
+
+    $('#hide-roles').click(function () {
+        $('#list-of-roles').toggleClass('d-none');
+    });
+
+});
