@@ -7,7 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Role.destroy_all
 User.destroy_all
+
+(1..10).each do |i|
+  role = Role.new
+  role.name = "Role #{i}"
+  role.active!
+  role.save
+end
 
 100.times do |i|
   u = User.new
@@ -16,7 +24,7 @@ User.destroy_all
   u.email = Faker::Internet.email
   u.role_ids = Role.ids.sample
   if u.save
-    print(u.email)
+    puts(u.email)
   end
 
 end

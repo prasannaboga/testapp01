@@ -1,24 +1,49 @@
-<p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <td>
+      <strong>First name:</strong>
+    </td>
+    <td>
+      <%= @user.first_name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Last name:</strong>
+    </td>
+    <td>
+      <%= @user.last_name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Email:</strong>
+    </td>
+    <td>
+      <%= @user.email %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Roles:</strong>
+    </td>
+    <td>
+      <% @user.role_names.each do |role_name| %>
+        <span class="badge badge-secondary"><%= role_name %></span>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, alt: @user.first_name, class: "img-thumbnail", size: '200x200' %>
+      <% else %>
+        <i>Image not found</i>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Roles:</strong>
-  <%= @user.role_names.join(', ') %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<hr>
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn' %> |
+<%= link_to 'Back', users_path, class: 'btn' %>
