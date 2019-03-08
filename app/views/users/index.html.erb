@@ -1,8 +1,19 @@
 <%= link_to 'New User', new_user_path, class: 'btn btn-primary btn-sm' %>
-<p>
-  Filter Roles - <%= select_tag 'role_id', options_for_select(@active_roles.collect {|u| [u.name, u.id]}),
-                                {include_blank: true, class: 'form-control', id: 'filter-roles'} %>
-</p>
+<hr>
+<%= form_tag users_path, method: :get, class: 'form-inline mb-2' do %>
+
+  <%= select_tag 'role_id', options_for_select(@active_roles.collect {|u| [u.name, u.id]}, params[:role_id]),
+                 {include_blank: 'All Roles', class: 'form-control mr-2', id: 'filter-roles'} %>
+  <div class="input-group mr-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">Sort by</div>
+    </div>
+    <%= select_tag 'sort_by', options_for_select([:first_name, :last_name, :email], params[:sort_by]),
+                   {class: 'form-control', id: 'sort-by'} %>
+  </div>
+
+  <%= submit_tag 'Search', class: 'btn btn-secondary' %>
+<% end %>
 
 <table class="table table-striped">
   <thead>
