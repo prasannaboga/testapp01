@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :roles do
-    
+    member do
+      put :update_status
+    end
   end
 end

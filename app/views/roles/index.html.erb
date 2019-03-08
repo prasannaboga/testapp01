@@ -2,7 +2,7 @@
   <div class="col-12">
     <button id="hide-roles" type="button" class="btn btn-primary">Hide Roles</button>
     <%= link_to 'Add Roles', new_role_path, class: 'btn btn-primary' %>
-    <div id="list-of-roles" class="d-none">
+    <div id="list-of-roles" class="d-nonex">
       <h4>List of Roles</h4>
       <table class="table">
         <thead>
@@ -18,7 +18,12 @@
               <%= role.name %>
             </td>
             <td>
-              <%= check_box_tag 'status', role.status, true %>
+              <%= check_box_tag 'status', role.status, role.active?, class: 'update_status', data: {
+                  id: role.id,
+                  remote: true,
+                  url: update_status_role_path(role.id),
+                  method: :put
+              } %>
             </td>
           </tr>
         <% end %>

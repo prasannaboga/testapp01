@@ -24,4 +24,8 @@ $(document).ready(function () {
         $('#list-of-roles').toggleClass('d-none');
     });
 
-});
+    $('.update_status').change(function (e) {
+        console.log($(this).data())
+    });
+
+})
