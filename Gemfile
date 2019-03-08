@@ -68,3 +68,5 @@ end
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'faker'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
