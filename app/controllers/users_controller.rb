@@ -4,7 +4,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.includes(:roles).joins(:roles).paginate(:page => params[:page], per_page: 10)
+    @users = User.includes(:roles).joins(:roles)
+    if params[:role_id].present?
+      @users = @users.where(roles: {id: params[:role_id]})
+
+    end
+    @users = @users.paginate(:page => params[:page], per_page: 10)
+    @active_roles = Role.active
   end
 
   # GET /users/1
