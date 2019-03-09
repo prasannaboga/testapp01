@@ -38,6 +38,30 @@
     <%= form.file_field :image, class: "form-control-file", accept: 'image/png,image/gif,image/jpeg' %>
   </div>
 
+  <div class="meta-fields">
+    <%= form.fields_for :meta_fields do |mf| %>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <%= mf.text_field :name, class: "form-control", placeholder: 'Name' %>
+          </div>
+          <div class="col-6">
+            <%= mf.text_field :value, class: "form-control", placeholder: 'Value' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <% if user.persisted? %>
+    <div class="form-group">
+      <%= link_to "Add Meta Fields", new_user_meta_field_path(user.id), remote: true,
+                  class: 'btn btn-primary btn-sm add-user-meta-fields' %>
+
+    </div>
+  <% end %>
+
   <%= form.submit 'Submit', class: 'btn btn-primary' %>
 
 <% end %>

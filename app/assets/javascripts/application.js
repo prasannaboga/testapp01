@@ -20,17 +20,6 @@
 
 $(document).ready(function () {
 
-    $('#hide-roles').click(function () {
-        $('#list-of-roles').toggleClass('d-none');
-    });
 
-    $('.update_status').change(function (e) {
-        console.log($(this).data())
-    });
-
-    $('#filter-roles').change(function () {
-
-        
-    })
 
 });
