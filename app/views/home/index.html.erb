@@ -1,5 +1,10 @@
 <div class="card">
   <div class="card-body">
-    Home Page
+    Home Page <br>
+    <%= color_field_tag 'background_color', session[:background_color], class: 'dynamic-background-color', data: {
+        remote: true,
+        url: dynamic_css_path(),
+        method: :put
+    } %>
   </div>
 </div>
